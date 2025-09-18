@@ -31,7 +31,7 @@ Review chronological logs of each IoT device’s check-ins at places like trailh
 
 - **Home Dashboard**: Quick access to Payments, Itinerary, Security, and IoT modules.
 - **Itinerary View**: Three-day plan with five landmarks and three eateries automatically arranged by time and proximity.
-- **QR Scan**: Built-in scanner for swift UPI/NFC payments.
+- **QR Scan**: Built-in QR system used for ID verification at a moments notice.
 - **IoT Map \& Devices**: Interactive map showing Bluetooth-enabled trackers, device list with TID tags, and action buttons for calls or device additions.
 
 
