@@ -303,6 +303,15 @@ class Location extends StatelessWidget {
     '14:30 - 18:30PM',
     '18:00 - 19:00PM',
   ];
+  static const image = [
+    'lib/placeholders/locations/location_0.png',
+    'lib/placeholders/locations/location_1.png',
+    'lib/placeholders/locations/location_2.png',
+    'lib/placeholders/locations/location_3.png',
+    'lib/placeholders/locations/location_4.png',
+    'lib/placeholders/locations/location_4.png',
+    'lib/placeholders/locations/location_5.png',
+  ];
   final int index;
 
   const Location({super.key, required this.index});
@@ -311,70 +320,66 @@ class Location extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Expanded(
-        child: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 76,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF0A6C71), // Lighter color at the top
-                    Color(0xFF024B4F), // Darker color at the bottom
-                  ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
+      child: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 76,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF0A6C71), // Lighter color at the top
+                  Color(0xFF024B4F), // Darker color at the bottom
+                ],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
               ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 55,
-                    width: 80,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'lib/placeholders/locations/location_$index.png',
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 55,
+                  width: 80,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(image[index]),
+                  ),
+                ),
+                SizedBox(width: 17),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 7),
+                    Text(
+                      labels[index],
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                  ),
-                  SizedBox(width: 17),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 7),
-                      Text(
-                        labels[index],
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        times[index],
-                        style: TextStyle(color: Colors.grey, fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    SizedBox(height: 4),
+                    Text(
+                      times[index],
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: IconButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(buttonPressed);
-                },
-                icon: rightArrow,
-              ),
+          ),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: IconButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(buttonPressed);
+              },
+              icon: rightArrow,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

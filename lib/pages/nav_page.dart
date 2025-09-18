@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:tourist_side_app/constants/const.dart';
 import 'package:tourist_side_app/Pages/profilepage.dart';
@@ -78,37 +80,38 @@ class _AppState extends State<App> {
         actions: [
           Row(
             children: [
-              if(_pageindex == 0)TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(backgroundColor),
-                  shadowColor: WidgetStateProperty.all(backgroundColor),
-                  overlayColor: WidgetStateProperty.all(backgroundColor),
-                  shape: WidgetStateProperty.all(
-                    RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              if (_pageindex == 0)
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(backgroundColor),
+                    shadowColor: WidgetStateProperty.all(backgroundColor),
+                    overlayColor: WidgetStateProperty.all(backgroundColor),
+                    shape: WidgetStateProperty.all(
+                      RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Tester',
+                        style: TextStyle(color: primaryColor, fontSize: 14),
+                      ),
+                      Text(
+                        'Tester-ID',
+                        style: TextStyle(color: secondaryColor, fontSize: 10),
+                      ),
+                    ],
                   ),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Tester',
-                      style: TextStyle(color: primaryColor, fontSize: 14),
-                    ),
-                    Text(
-                      'Tester-ID',
-                      style: TextStyle(color: secondaryColor, fontSize: 10),
-                    ),
-                  ],
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 8, 0),
                 child: Container(
@@ -129,14 +132,14 @@ class _AppState extends State<App> {
                         borderRadius: BorderRadius.circular(999),
                       ),
                       child: SizedBox(
-                              height: 29,
-                              width: 29,
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            )
+                        height: 29,
+                        width: 29,
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 24,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -145,7 +148,16 @@ class _AppState extends State<App> {
           ),
         ],
       ),
-      body: IndexedStack(index: _pageindex, children: [Home(),PaymentsPage(), ItineraryPage(), IotPage(),QrPage()]),
+      body: IndexedStack(
+        index: _pageindex,
+        children: [
+          Home(),
+          PaymentsPage(),
+          ItineraryPage(),
+          IotPage(),
+          QrPage(data: jsonEncode({'name': 'John Mckinley', 'id': 'MacXXXXXXXXXley', 'email': 'john.mckinleyXXXX@GXXXX.com', 'phone number': '+91 98XXXXXX10'})),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -161,18 +173,22 @@ class _AppState extends State<App> {
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
-            if(index<=1) {
+            if (index <= 1) {
               _pageindex = index;
             } else {
-              _pageindex = index-1;
+              _pageindex = index - 1;
             }
           });
         },
         overlayColor: WidgetStateProperty.all(Colors.transparent),
-        indicatorColor: _pageindex>3?Colors.transparent:secondaryColor,
+        indicatorColor: _pageindex > 3 ? Colors.transparent : secondaryColor,
         elevation: 0,
         backgroundColor: backgroundColor,
-        selectedIndex: _pageindex>3?0:_pageindex>1?_pageindex+1:_pageindex,
+        selectedIndex: _pageindex > 3
+            ? 0
+            : _pageindex > 1
+            ? _pageindex + 1
+            : _pageindex,
         destinations: [
           NavigationDestination(icon: homeLogo, label: 'Home'),
           NavigationDestination(icon: paymentsLogo, label: 'Payments'),
