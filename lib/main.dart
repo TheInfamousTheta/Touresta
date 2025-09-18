@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourist_side_app/Pages/homepage.dart';
+import 'package:tourist_side_app/pages/nav_page.dart';
 import 'package:tourist_side_app/constants/const.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
       ),
-      home: MyHomePage(),
+      home: App(),
     );
   }
 }
