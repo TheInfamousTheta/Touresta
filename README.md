@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
 # Travel Companion App README
 
 Welcome to **Travel Companion**, a unified mobile solution for effortless trip planning, seamless payments, real-time security, and IoT-powered device tracking.
@@ -52,21 +50,6 @@ Review chronological logs of each IoT device’s check-ins at places like trailh
 - **Payments**: UPI/NFC module integrating with India’s NPCI rails and secure QR-based transactions.
 - **Mapping \& Alerts**: Google Maps SDK with polygon overlays for restricted zones and custom route planners.
 - **IoT Stack**: BLE and LoRaWAN support for long-range tracking; backend services handle device telemetry, location aggregation, and group communication.
-
-
-## Contribution \& Support
-
-For bug reports, feature requests, or questions, open an issue on our GitHub repository or contact our support team via the in-app “Messages” tab under Security → Messages.
-
-Happy Travels!
-Travel Companion Team
-<span style="display:none">[^1][^2][^3][^4]</span>
-
-<div style="text-align: center">⁂</div>
-
-[^1]: Itineary.jpg
-
-[^2]: WhatsApp-Image-2025-09-19-at-00.18.14_277bd918.jpg
 
 [^3]: Home.jpg
 
