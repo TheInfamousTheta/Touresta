@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourist_side_app/Pages/homePage.dart';
+import 'package:tourist_side_app/Pages/homepage.dart';
 import 'package:tourist_side_app/constants/const.dart';
 
 void main() {
