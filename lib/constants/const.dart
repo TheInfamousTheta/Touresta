@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 //all colors to be used in the app
-
 const primaryColor = Color(0xFF063154);
 const secondaryColor = Color(0xFF26668C);
 const backgroundColor = Color(0xFFF7F6F2);
@@ -49,6 +48,8 @@ final upiLogo = SvgPicture.asset(
   'lib/constants/logos/home_page/UPI_logo.svg',
   semanticsLabel: 'UPI',
 );
+
+
 //navigation bar logos
 final iotLogo = SvgPicture.asset(
   'lib/constants/logos/nav_bar/IoT_logo.svg',
@@ -69,3 +70,24 @@ final homeLogo = SvgPicture.asset(
     'lib/constants/logos/nav_bar/Home_logo.svg',
     semanticsLabel: 'Home',);
 
+
+//itinerary page logos
+final calendarLogo = SvgPicture.asset(
+    'lib/constants/logos/itinerary_page/Calendar_logo.svg',
+    semanticsLabel: 'Calendar',);
+final eateriesLogo = SvgPicture.asset(
+    'lib/constants/logos/itinerary_page/Eateries_logo.svg',
+    semanticsLabel: 'Eateries',);
+final locationLogo = SvgPicture.asset(
+    'lib/constants/logos/itinerary_page/Location_logo.svg',
+    semanticsLabel: 'Location',);
+final rightArrow = SvgPicture.asset(
+    'lib/constants/logos/itinerary_page/double_right_arrow.svg',
+    semanticsLabel: 'Right Arrow',);
+
+//button press test
+
+const buttonPressed = SnackBar(
+  content: Text('Button Pressed'),
+  duration: Duration(milliseconds: 10),
+);

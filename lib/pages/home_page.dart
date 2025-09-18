@@ -68,7 +68,9 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(buttonPressed);
+      },
       child: Container(
         height: 68,
         width: 82,
@@ -100,7 +102,9 @@ class Button extends StatelessWidget {
 
 class Home extends StatelessWidget {
   const Home({super.key});
+
   final _alert = true;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -234,4 +238,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-

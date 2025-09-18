@@ -1,8 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tourist_side_app/constants/const.dart';
 import 'package:tourist_side_app/Pages/profilepage.dart';
-import 'package:tourist_side_app/pages/homepage.dart';
+import 'package:tourist_side_app/pages/home_page.dart';
+import 'package:tourist_side_app/pages/payments_page.dart';
+import 'package:tourist_side_app/pages/itinerary_page.dart';
+import 'package:tourist_side_app/pages/iot_page.dart';
+import 'package:tourist_side_app/pages/qr_page.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -13,7 +16,6 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   int _pageindex = 0;
-  final _image = '';
   static const _titles = [
     Text(
       '',
@@ -68,7 +70,9 @@ class _AppState extends State<App> {
         elevation: 0,
         title: _titles[_pageindex],
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(buttonPressed);
+          },
           icon: Icon(Icons.menu_rounded, color: primaryColor, size: 24),
         ),
         actions: [
@@ -124,8 +128,7 @@ class _AppState extends State<App> {
                         color: primaryColor,
                         borderRadius: BorderRadius.circular(999),
                       ),
-                      child: kDebugMode
-                          ? SizedBox(
+                      child: SizedBox(
                               height: 29,
                               width: 29,
                               child: Icon(
@@ -134,7 +137,6 @@ class _AppState extends State<App> {
                                 size: 24,
                               ),
                             )
-                          : CircleAvatar(backgroundImage: NetworkImage(_image)),
                     ),
                   ),
                 ),
@@ -143,7 +145,7 @@ class _AppState extends State<App> {
           ),
         ],
       ),
-      body: IndexedStack(index: _pageindex, children: [Home(),]),
+      body: IndexedStack(index: _pageindex, children: [Home(),PaymentsPage(), ItineraryPage(), IotPage(),QrPage()]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -159,14 +161,18 @@ class _AppState extends State<App> {
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
-            _pageindex = index;
+            if(index<=1) {
+              _pageindex = index;
+            } else {
+              _pageindex = index-1;
+            }
           });
         },
         overlayColor: WidgetStateProperty.all(Colors.transparent),
-        indicatorColor: secondaryColor,
+        indicatorColor: _pageindex>3?Colors.transparent:secondaryColor,
         elevation: 0,
         backgroundColor: backgroundColor,
-        selectedIndex: _pageindex,
+        selectedIndex: _pageindex>3?0:_pageindex>1?_pageindex+1:_pageindex,
         destinations: [
           NavigationDestination(icon: homeLogo, label: 'Home'),
           NavigationDestination(icon: paymentsLogo, label: 'Payments'),

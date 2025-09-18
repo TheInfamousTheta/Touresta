@@ -62,6 +62,8 @@ flutter:
     - lib/placeholders/
     - lib/constants/logos/home_page/
     - lib/constants/logos/nav_bar/
+    - lib/constants/logos/itinerary_page/
+    - lib/placeholders/locations/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
